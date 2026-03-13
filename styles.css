@@ -1,0 +1,76 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.glass-panel {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+}
+
+.dark .glass-panel {
+    background: rgba(30, 41, 59, 0.9);
+    backdrop-filter: blur(10px);
+}
+
+.content-section {
+    display: none;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.content-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-item.active {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.dark .menu-item.active {
+    background-color: #2563eb;
+}
+
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.submenu-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
+}
+
+.submenu-container.open {
+    max-height: 1000px;
+    opacity: 1;
+}
+
+.chevron-icon {
+    transition: transform 0.3s ease;
+}
+
+.chevron-icon.rotate {
+    transform: rotate(180deg);
+}
