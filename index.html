@@ -49,87 +49,153 @@
                     Course Contents</div>
                 <nav class="space-y-1">
                     <div class="group/menu">
-                        <button onclick="toggleSubMenu('intro-submenu', this); showSection('intro')"
-                            class="menu-item active w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 hover:bg-slate-100 dark:hover:bg-slate-800/50 focus:outline-none text-left mb-1">
+                        <div onclick="toggleSubMenu('intro-submenu', this); showSection('intro')"
+                            class="menu-item active w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 hover:bg-slate-100 dark:hover:bg-slate-800/50 focus:outline-none text-left mb-1 cursor-pointer">
                             <span
                                 class="w-8 h-8 rounded-lg flex items-center justify-center bg-white/20 mr-3 shadow-sm border border-slate-200/50 dark:border-slate-700/50">
                                 <i class="fa-solid fa-book-open"></i>
                             </span>
                             <span class="flex-1">0.1 Spring vs Spring Boot</span>
-                            <i class="fa-solid fa-chevron-down text-xs opacity-50 chevron-icon rotate"></i>
-                        </button>
-                        
+                            <span onclick="event.stopPropagation(); toggleSubMenu('intro-submenu', this.parentElement)"
+                                class="p-2 -mr-2 hover:bg-black/5 dark:hover:bg-white/10 rounded-lg transition-colors flex items-center justify-center">
+                                <i class="fa-solid fa-chevron-down text-xs opacity-50 chevron-icon rotate"></i>
+                            </span>
+                        </div>
+
                         <!-- Level 1: Sub Menu (Collapsible) -->
-                        <div id="intro-submenu" class="submenu-container open ml-11 flex flex-col space-y-1 border-l-2 border-slate-200 dark:border-slate-800/50 pl-4 py-1">
+                        <div id="intro-submenu"
+                            class="submenu-container open ml-11 flex flex-col space-y-1 border-l-2 border-slate-200 dark:border-slate-800/50 pl-4 py-1">
                             <!-- Spring Framework Dropdown -->
                             <div>
-                                <button onclick="toggleSubMenu('spring-submenu', this); location.href='#spring-framework'" class="w-full text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-spring dark:hover:text-spring transition-colors py-1.5 flex items-center justify-between group">
+                                <div onclick="toggleSubMenu('spring-submenu', this); showSection('intro'); location.href='#spring-framework'"
+                                    class="w-full text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-spring dark:hover:text-spring transition-colors py-1.5 flex items-center justify-between group cursor-pointer">
                                     <span class="flex items-center">
-                                        <i class="fa-solid fa-chevron-right text-[10px] mr-2 opacity-50"></i> Spring Framework
+                                        <i class="fa-solid fa-chevron-right text-[10px] mr-2 opacity-50"></i> Spring
+                                        Framework
                                     </span>
-                                    <i class="fa-solid fa-chevron-down text-[8px] opacity-30 chevron-icon mr-2"></i>
-                                </button>
-                                
+                                    <span
+                                        onclick="event.stopPropagation(); toggleSubMenu('spring-submenu', this.parentElement)"
+                                        class="p-1 hover:bg-black/5 dark:hover:bg-white/10 rounded-md transition-colors flex items-center justify-center">
+                                        <i class="fa-solid fa-chevron-down text-[8px] opacity-30 chevron-icon mr-2"></i>
+                                    </span>
+                                </div>
+
                                 <!-- Level 2: Sub-Sub Menu (Collapsible) -->
-                                <div id="spring-submenu" class="submenu-container ml-4 border-l border-slate-100 dark:border-slate-800/30 pl-3">
+                                <div id="spring-submenu"
+                                    class="submenu-container ml-4 border-l border-slate-100 dark:border-slate-800/30 pl-3">
                                     <!-- Coupling Dropdown -->
                                     <div class="py-1">
-                                        <button onclick="toggleSubMenu('coupling-submenu', this); location.href='#coupling'" class="w-full text-[11px] text-slate-400 dark:text-slate-500 hover:text-spring dark:hover:text-spring transition-colors py-1 flex items-center justify-between group/sub">
+                                        <div onclick="toggleSubMenu('coupling-submenu', this); showSection('intro'); location.href='#coupling'"
+                                            class="w-full text-[11px] text-slate-400 dark:text-slate-500 hover:text-spring dark:hover:text-spring transition-colors py-1 flex items-center justify-between group/sub cursor-pointer">
                                             <span class="flex items-center">
                                                 <i class="fa-solid fa-minus text-[8px] mr-2 opacity-30"></i> Coupling
                                             </span>
-                                            <i class="fa-solid fa-chevron-down text-[7px] opacity-20 chevron-icon mr-2"></i>
-                                        </button>
-                                        <div id="coupling-submenu" class="submenu-container ml-3 border-l border-slate-50 dark:border-slate-800/20 pl-2 flex flex-col space-y-1">
-                                            <a href="#coupling" class="text-[10px] text-slate-400 hover:text-spring transition-colors py-0.5 mt-1">Overview</a>
-                                            <a href="#tight-coupling" class="text-[10px] text-slate-400 hover:text-spring transition-colors py-0.5">Tight Coupling</a>
-                                            <a href="#loose-coupling" class="text-[10px] text-slate-400 hover:text-spring transition-colors py-0.5">Loose Coupling</a>
+                                            <span
+                                                onclick="event.stopPropagation(); toggleSubMenu('coupling-submenu', this.parentElement)"
+                                                class="p-1 hover:bg-black/5 dark:hover:bg-white/10 rounded-md transition-colors flex items-center justify-center">
+                                                <i
+                                                    class="fa-solid fa-chevron-down text-[7px] opacity-20 chevron-icon mr-2"></i>
+                                            </span>
+                                        </div>
+                                        <div id="coupling-submenu"
+                                            class="submenu-container ml-3 border-l border-slate-50 dark:border-slate-800/20 pl-2 flex flex-col space-y-1">
+                                            <a href="#coupling" onclick="showSection('intro')"
+                                                class="text-[10px] text-slate-400 hover:text-spring transition-colors py-0.5 mt-1">Overview</a>
+                                            <a href="#tight-coupling" onclick="showSection('intro')"
+                                                class="text-[10px] text-slate-400 hover:text-spring transition-colors py-0.5">Tight
+                                                Coupling</a>
+                                            <a href="#loose-coupling" onclick="showSection('intro')"
+                                                class="text-[10px] text-slate-400 hover:text-spring transition-colors py-0.5">Loose
+                                                Coupling</a>
                                         </div>
                                     </div>
 
                                     <!-- Cohesion Dropdown -->
                                     <div class="py-1">
-                                        <button onclick="toggleSubMenu('cohesion-submenu', this); location.href='#cohesion'" class="w-full text-[11px] text-slate-400 dark:text-slate-500 hover:text-spring dark:hover:text-spring transition-colors py-1 flex items-center justify-between group/sub">
+                                        <div onclick="toggleSubMenu('cohesion-submenu', this); showSection('intro'); location.href='#cohesion'"
+                                            class="w-full text-[11px] text-slate-400 dark:text-slate-500 hover:text-spring dark:hover:text-spring transition-colors py-1 flex items-center justify-between group/sub cursor-pointer">
                                             <span class="flex items-center">
                                                 <i class="fa-solid fa-minus text-[8px] mr-2 opacity-30"></i> Cohesion
                                             </span>
-                                            <i class="fa-solid fa-chevron-down text-[7px] opacity-20 chevron-icon mr-2"></i>
-                                        </button>
-                                        <div id="cohesion-submenu" class="submenu-container ml-3 border-l border-slate-50 dark:border-slate-800/20 pl-2 flex flex-col space-y-1">
-                                            <a href="#cohesion" class="text-[10px] text-slate-400 hover:text-spring transition-colors py-0.5 mt-1">Overview</a>
-                                            <a href="#low-cohesion" class="text-[10px] text-slate-400 hover:text-spring transition-colors py-0.5">Low Cohesion</a>
-                                            <a href="#high-cohesion" class="text-[10px] text-slate-400 hover:text-spring transition-colors py-0.5">High Cohesion</a>
+                                            <span
+                                                onclick="event.stopPropagation(); toggleSubMenu('cohesion-submenu', this.parentElement)"
+                                                class="p-1 hover:bg-black/5 dark:hover:bg-white/10 rounded-md transition-colors flex items-center justify-center">
+                                                <i
+                                                    class="fa-solid fa-chevron-down text-[7px] opacity-20 chevron-icon mr-2"></i>
+                                            </span>
+                                        </div>
+                                        <div id="cohesion-submenu"
+                                            class="submenu-container ml-3 border-l border-slate-50 dark:border-slate-800/20 pl-2 flex flex-col space-y-1">
+                                            <a href="#cohesion" onclick="showSection('intro')"
+                                                class="text-[10px] text-slate-400 hover:text-spring transition-colors py-0.5 mt-1">Overview</a>
+                                            <a href="#low-cohesion" onclick="showSection('intro')"
+                                                class="text-[10px] text-slate-400 hover:text-spring transition-colors py-0.5">Low
+                                                Cohesion</a>
+                                            <a href="#high-cohesion" onclick="showSection('intro')"
+                                                class="text-[10px] text-slate-400 hover:text-spring transition-colors py-0.5">High
+                                                Cohesion</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Spring Boot Dropdown -->
                             <div class="mt-1">
-                                <button onclick="toggleSubMenu('boot-submenu', this); location.href='#spring-boot'" class="w-full text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-spring dark:hover:text-spring transition-colors py-1.5 flex items-center justify-between group">
+                                <div onclick="toggleSubMenu('boot-submenu', this); showSection('intro'); location.href='#spring-boot'"
+                                    class="w-full text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-spring dark:hover:text-spring transition-colors py-1.5 flex items-center justify-between group cursor-pointer">
                                     <span class="flex items-center">
-                                        <i class="fa-solid fa-chevron-right text-[10px] mr-2 opacity-50"></i> Spring Boot
+                                        <i class="fa-solid fa-chevron-right text-[10px] mr-2 opacity-50"></i> Spring
+                                        Boot
                                     </span>
-                                    <i class="fa-solid fa-chevron-down text-[8px] opacity-30 chevron-icon mr-2"></i>
-                                </button>
-                                
-                                <div id="boot-submenu" class="submenu-container ml-4 border-l border-slate-100 dark:border-slate-800/30 pl-3">
-                                    <a href="#key-benefits" class="text-[11px] text-slate-400 dark:text-slate-500 hover:text-spring dark:hover:text-spring transition-colors py-1.5 flex items-center">
+                                    <span
+                                        onclick="event.stopPropagation(); toggleSubMenu('boot-submenu', this.parentElement)"
+                                        class="p-1 hover:bg-black/5 dark:hover:bg-white/10 rounded-md transition-colors flex items-center justify-center">
+                                        <i class="fa-solid fa-chevron-down text-[8px] opacity-30 chevron-icon mr-2"></i>
+                                    </span>
+                                </div>
+
+                                <div id="boot-submenu"
+                                    class="submenu-container ml-4 border-l border-slate-100 dark:border-slate-800/30 pl-3">
+                                    <a href="#key-benefits" onclick="showSection('intro')"
+                                        class="text-[11px] text-slate-400 dark:text-slate-500 hover:text-spring dark:hover:text-spring transition-colors py-1.5 flex items-center">
                                         <i class="fa-solid fa-minus text-[8px] mr-2 opacity-30"></i> Key Benefits
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <button
-                        class="menu-item w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl text-slate-600 dark:text-slate-400 opacity-50 cursor-not-allowed text-left mt-2">
-                        <span
-                            class="w-8 h-8 rounded-lg flex items-center justify-center bg-slate-100 dark:bg-slate-800 mr-3">
-                            <i class="fa-solid fa-lock"></i>
-                        </span>
-                        0.2 How it internal works
-                    </button>
+
+                    <div class="group/menu mt-2">
+                        <div onclick="toggleSubMenu('how-works-submenu', this); showSection('how-it-works')"
+                            class="menu-item w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 hover:bg-slate-100 dark:hover:bg-slate-800/50 focus:outline-none text-left mb-1 cursor-pointer">
+                            <span
+                                class="w-8 h-8 rounded-lg flex items-center justify-center bg-white/20 mr-3 shadow-sm border border-slate-200/50 dark:border-slate-700/50">
+                                <i class="fa-solid fa-gears text-spring"></i>
+                            </span>
+                            <span class="flex-1">0.2 How it internally works</span>
+                            <span
+                                onclick="event.stopPropagation(); toggleSubMenu('how-works-submenu', this.parentElement)"
+                                class="p-2 -mr-2 hover:bg-black/5 dark:hover:bg-white/10 rounded-lg transition-colors flex items-center justify-center">
+                                <i class="fa-solid fa-chevron-down text-xs opacity-50 chevron-icon"></i>
+                            </span>
+                        </div>
+
+                        <div id="how-works-submenu"
+                            class="submenu-container ml-11 flex flex-col space-y-1 border-l-2 border-slate-200 dark:border-slate-800/50 pl-4 py-1">
+                            <a href="#auto-config" onclick="showSection('how-it-works')"
+                                class="text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-spring dark:hover:text-spring transition-colors py-1.5 flex items-center">
+                                <i class="fa-solid fa-chevron-right text-[10px] mr-2 opacity-50"></i> Auto-configuration
+                            </a>
+                            <a href="#execution-flow" onclick="showSection('how-it-works')"
+                                class="text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-spring dark:hover:text-spring transition-colors py-1.5 flex items-center">
+                                <i class="fa-solid fa-chevron-right text-[10px] mr-2 opacity-50"></i> Execution Flow
+                            </a>
+                            <a href="#app-types" onclick="showSection('how-it-works')"
+                                class="text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-spring dark:hover:text-spring transition-colors py-1.5 flex items-center">
+                                <i class="fa-solid fa-chevron-right text-[10px] mr-2 opacity-50"></i> Application Types
+                            </a>
+                        </div>
+                    </div>
                     <button
                         class="menu-item w-full flex items-center px-4 py-3 text-sm font-medium rounded-xl text-slate-600 dark:text-slate-400 opacity-50 cursor-not-allowed text-left">
                         <span
@@ -170,7 +236,8 @@
                     <section
                         class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-700/50 card-hover relative overflow-hidden group">
                         <div class="absolute top-0 left-0 w-2 h-full bg-blue-500 opacity-70"></div>
-                        <h2 id="spring-framework" class="text-3xl font-bold mb-6 flex items-center text-slate-800 dark:text-white scroll-mt-24">
+                        <h2 id="spring-framework"
+                            class="text-3xl font-bold mb-6 flex items-center text-slate-800 dark:text-white scroll-mt-24">
                             <i class="fa-brands fa-java text-blue-500 mr-3 text-4xl"></i> Spring Framework
                         </h2>
                         <div
@@ -216,7 +283,9 @@
                                                 class="w-10 h-10 object-contain" />
                                         </div>
                                         <div>
-                                            <h3 id="coupling" class="text-2xl font-bold text-slate-800 dark:text-white scroll-mt-24">Coupling</h3>
+                                            <h3 id="coupling"
+                                                class="text-2xl font-bold text-slate-800 dark:text-white scroll-mt-24">
+                                                Coupling</h3>
                                             <p
                                                 class="text-indigo-600 dark:text-indigo-400 text-sm font-semibold tracking-wide uppercase">
                                                 Inter-Module Dependency</p>
@@ -288,7 +357,9 @@
                                                 class="w-10 h-10 object-contain" />
                                         </div>
                                         <div>
-                                            <h3 id="cohesion" class="text-2xl font-bold text-slate-800 dark:text-white scroll-mt-24">Cohesion</h3>
+                                            <h3 id="cohesion"
+                                                class="text-2xl font-bold text-slate-800 dark:text-white scroll-mt-24">
+                                                Cohesion</h3>
                                             <p
                                                 class="text-emerald-600 dark:text-emerald-400 text-sm font-semibold tracking-wide uppercase">
                                                 Module Integrity</p>
@@ -381,7 +452,8 @@
                         </div>
                         <div class="absolute top-0 left-0 w-2 h-full bg-spring opacity-70"></div>
 
-                        <h2 id="spring-boot" class="text-3xl font-bold mb-6 flex items-center text-slate-800 dark:text-white scroll-mt-24">
+                        <h2 id="spring-boot"
+                            class="text-3xl font-bold mb-6 flex items-center text-slate-800 dark:text-white scroll-mt-24">
                             <i class="fa-solid fa-power-off text-spring mr-3"></i> Spring Boot
                         </h2>
 
@@ -541,7 +613,274 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </section>
+                </div>
 
+                <!-- Section: How it internally works -->
+                <div id="how-it-works" class="content-section space-y-12 pb-20">
+                    <header class="mb-12">
+                        <h1
+                            class="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-spring to-emerald-600 mb-4 pb-1">
+                            How Spring Boot Internally Works
+                        </h1>
+                        <p class="text-lg text-slate-600 dark:text-slate-400 border-l-4 border-spring pl-4 italic">
+                            Unveiling the magic behind the "Convention over Configuration" philosophy.
+                        </p>
+                    </header>
+
+                    <!-- Auto-Configuration Magic -->
+                    <section
+                        class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-700/50 card-hover relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-2 h-full bg-spring opacity-70"></div>
+                        <h2 id="auto-config"
+                            class="text-3xl font-bold mb-8 flex items-center text-slate-800 dark:text-white scroll-mt-24">
+                            <i class="fa-solid fa-wand-magic-sparkles text-spring mr-3 text-4xl"></i> Auto-configuration
+                            Magic
+                        </h2>
+
+                        <div class="space-y-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div class="space-y-4">
+                                    <h3 class="text-xl font-bold text-slate-700 dark:text-slate-200 flex items-center">
+                                        <i class="fa-solid fa-jar text-amber-500 mr-2"></i> Pre-configured Jars
+                                    </h3>
+                                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                        We use <b>pre-configured jars</b> provided by Spring Boot developers. Instead of
+                                        manual setup, these jars come with sensible defaults.
+                                    </p>
+                                    <div
+                                        class="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
+                                        <p class="text-sm font-semibold text-slate-500 mb-2 uppercase tracking-wider">
+                                            Starter POMs</p>
+                                        <ul class="space-y-2">
+                                            <li class="flex items-center text-sm">
+                                                <i class="fa-solid fa-check text-spring mr-2"></i>
+                                                <code>spring-boot-starter-web</code>
+                                            </li>
+                                            <li class="flex items-center text-sm">
+                                                <i class="fa-solid fa-check text-spring mr-2"></i>
+                                                <code>spring-boot-starter-data-jpa</code>
+                                            </li>
+                                            <li class="flex items-center text-sm">
+                                                <i class="fa-solid fa-check text-spring mr-2"></i>
+                                                <code>spring-boot-starter-test</code>
+                                            </li>
+                                        </ul>
+                                        <p class="mt-3 text-xs italic text-slate-500">Adding these "starters"
+                                            transitively brings in all required <b>dependencies</b> (jars).</p>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-4">
+                                    <h3 class="text-xl font-bold text-slate-700 dark:text-slate-200 flex items-center">
+                                        <i class="fa-solid fa-file-code text-blue-500 mr-2"></i> spring.factories
+                                    </h3>
+                                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                        After adding the starter pom, the core registry is
+                                        <code>META-INF/spring.factories</code>. It contains a list of
+                                        <b>Auto-Configuration classes</b>.
+                                    </p>
+                                    <div
+                                        class="p-4 bg-indigo-50/50 dark:bg-indigo-900/10 rounded-2xl border border-indigo-100 dark:border-indigo-800/30">
+                                        <p class="text-sm italic">"Spring Boot reads this file at startup to find
+                                            <b>@Configuration</b> classes that provide the 'magic' beans."
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="bg-white dark:bg-slate-900/80 rounded-2xl p-6 border border-slate-100 dark:border-slate-800 mt-6 shadow-inner">
+                                <h4 class="font-bold text-slate-800 dark:text-white mb-4 flex items-center">
+                                    <i class="fa-solid fa-microchip text-rose-500 mr-2"></i> The Decision Logic:
+                                    @Conditional
+                                </h4>
+                                <div class="flex flex-col md:flex-row items-center gap-6">
+                                    <div class="flex-1 space-y-3">
+                                        <p class="text-sm text-slate-600 dark:text-slate-400">
+                                            Before loading a configuration, Spring Boot performs a "Conditional Check":
+                                        </p>
+                                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                            <li
+                                                class="bg-white dark:bg-slate-800 px-3 py-2 rounded-lg border border-slate-100 dark:border-slate-700 text-xs font-mono">
+                                                @ConditionalOnClass</li>
+                                            <li
+                                                class="bg-white dark:bg-slate-800 px-3 py-2 rounded-lg border border-slate-100 dark:border-slate-700 text-xs font-mono">
+                                                @ConditionalOnProperty</li>
+                                            <li
+                                                class="bg-white dark:bg-slate-800 px-3 py-2 rounded-lg border border-slate-100 dark:border-slate-700 text-xs font-mono">
+                                                @ConditionalOnMissingBean</li>
+                                            <li
+                                                class="bg-white dark:bg-slate-800 px-3 py-2 rounded-lg border border-slate-100 dark:border-slate-700 text-xs font-mono">
+                                                @ConditionalOnResource</li>
+                                        </ul>
+                                    </div>
+                                    <div
+                                        class="flex-shrink-0 bg-spring/10 p-5 rounded-full border-2 border-dashed border-spring/30 animate-pulse text-spring font-bold text-center">
+                                        <span class="block text-2xl">IF CONDITIONS ARE MET</span>
+                                        <span class="text-[10px] uppercase">Enabled</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Execution Flow -->
+                    <section id="execution-flow" class="scroll-mt-24">
+                        <h2 class="text-3xl font-bold mb-8 text-slate-800 dark:text-white">
+                            The Startup Lifecycle
+                        </h2>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                            <div class="lg:col-span-1 space-y-6">
+                                <div
+                                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-sm">
+                                    <h3 class="font-bold text-xl mb-4 text-spring">@SpringBootApplication</h3>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                        This <i>single</i> annotation represents a combination of three powerful
+                                        traditional Spring annotations:
+                                    </p>
+                                    <div class="mt-4 space-y-3">
+                                        <div
+                                            class="flex items-center gap-3 p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                                            <span class="text-xs font-mono text-blue-500">@Configuration</span>
+                                        </div>
+                                        <div
+                                            class="flex items-center gap-3 p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                                            <span
+                                                class="text-xs font-mono text-emerald-500">@EnableAutoConfiguration</span>
+                                        </div>
+                                        <div
+                                            class="flex items-center gap-3 p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                                            <span class="text-xs font-mono text-amber-500">@ComponentScan</span>
+                                        </div>
+                                    </div>
+                                    <p class="mt-4 text-xs text-slate-500">Note: The main method is primarily for IDE
+                                        launching; in production, deployment scenarios vary.</p>
+                                </div>
+                            </div>
+
+                            <div class="lg:col-span-2 space-y-4">
+                                <div
+                                    class="bg-slate-900 rounded-3xl p-8 text-slate-300 font-mono text-sm relative overflow-hidden group">
+                                    <div
+                                        class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                                        <i class="fa-solid fa-code text-6xl"></i>
+                                    </div>
+                                    <h3
+                                        class="text-slate-400 text-xs font-bold tracking-[0.2em] mb-6 border-l-2 border-spring pl-3">
+                                        SpringApplication.run() Pipeline</h3>
+                                    <p class="text-slate-500 text-xs mt-1 italic">SpringApplication.run() helps us to
+                                        start the ApplicationContext that searches the classes with @Configuration,
+                                        @Component, @Service and it will initialize all the declared beans in those
+                                        Configuration classes and initiate the required beans. And stores in IOC
+                                        (Inversion of Control) (IoC container is a framework for implementing automated
+                                        dependency injection.) of JVM</p>
+
+                                    <div class="space-y-6 relative">
+                                        <div class="absolute left-[15px] top-2 bottom-2 w-[2px] bg-slate-800"></div>
+
+                                        <div class="flex gap-4 relative">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-spring text-white flex items-center justify-center font-bold z-10 text-xs shadow-lg shadow-spring/20">
+                                                1</div>
+                                            <div>
+                                                <h4 class="text-white font-bold">Create Instance</h4>
+                                                <p class="text-slate-500 text-xs mt-1 italic">Creates SpringApplication
+                                                    instance</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex gap-4 relative">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-spring text-white flex items-center justify-center font-bold z-10 text-xs shadow-lg shadow-spring/20">
+                                                2</div>
+                                            <div>
+                                                <h4 class="text-white font-bold">Determine Web
+                                                    Environment/ApplicationType</h4>
+                                                <p class="text-slate-500 text-xs mt-1 italic">Detects Servlet, Reactive,
+                                                    or None</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex gap-4 relative">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-spring text-white flex items-center justify-center font-bold z-10 text-xs shadow-lg shadow-spring/20">
+                                                3</div>
+                                            <div>
+                                                <h4 class="text-white font-bold">Create ApplicationContext</h4>
+                                                <p class="text-slate-500 text-xs mt-1 italic">The core container for
+                                                    bean management</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="flex gap-4 relative">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-spring text-white flex items-center justify-center font-bold z-10 text-xs shadow-lg shadow-spring/20">
+                                                4</div>
+                                            <div>
+                                                <h4 class="text-white font-bold">Register & Refresh</h4>
+                                                <p class="text-slate-500 text-xs mt-1 italic">Register annotated classes
+                                                    as beans <br /> Instantiates beans, injects <br /> dependencies, and
+                                                    stores in <br /> <b>IoC Container</b></p>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="flex gap-4 relative">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-spring text-white flex items-center justify-center font-bold z-10 text-xs shadow-lg shadow-spring/20">
+                                                5</div>
+                                            <div>
+                                                <h4 class="text-white font-bold">Start Embedded Server</h4>
+                                                <p class="text-slate-500 text-xs mt-1 italic">Launches internal Tomcat /
+                                                    Jetty / Undertow</p>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="flex gap-4 relative">
+                                            <div
+                                                class="w-8 h-8 rounded-full bg-spring text-white flex items-center justify-center font-bold z-10 text-xs shadow-lg shadow-spring/20">
+                                                6</div>
+                                            <div>
+                                                <h4 class="text-white font-bold">App is up & running</h4>
+                                                <p class="text-slate-500 text-xs mt-1 italic">App is ready and listening
+                                                    for requests.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Application Types -->
+                    <section id="app-types"
+                        class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-700/50 card-hover scroll-mt-24">
+                        <h2 class="text-2xl font-bold mb-6 text-slate-800 dark:text-white flex items-center">
+                            <i class="fa-solid fa-tags text-indigo-500 mr-3"></i> Application Types
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div
+                                class="p-6 rounded-2xl bg-blue-50/50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
+                                <h4 class="font-bold text-blue-700 dark:text-blue-400 mb-2">Servlet</h4>
+                                <p class="text-xs text-slate-600 dark:text-slate-400">Traditional Spring MVC application
+                                    using blocking I/O.</p>
+                            </div>
+                            <div
+                                class="p-6 rounded-2xl bg-emerald-50/50 dark:bg-emerald-900/10 border border-emerald-100 dark:border-emerald-900/20">
+                                <h4 class="font-bold text-emerald-700 dark:text-emerald-400 mb-2">Reactive</h4>
+                                <p class="text-xs text-slate-600 dark:text-slate-400">Spring WebFlux application for
+                                    non-blocking, asynchronous streams.</p>
+                            </div>
+                            <div
+                                class="p-6 rounded-2xl bg-slate-50/50 dark:bg-slate-900/10 border border-slate-200 dark:border-slate-800/20">
+                                <h4 class="font-bold text-slate-700 dark:text-slate-400 mb-2">None</h4>
+                                <p class="text-xs text-slate-600 dark:text-slate-400">CLI tools, batch jobs, or other
+                                    background applications without a web server.</p>
+                            </div>
                         </div>
                     </section>
                 </div>

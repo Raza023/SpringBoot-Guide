@@ -45,6 +45,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Restore sidebar state
+    const savedSection = localStorage.getItem('lastSection');
+    if (savedSection) {
+        showSection(savedSection, false); // Pass false to prevent scroll-to-top on reload if desired, but user said "reading last time"
+    }
+
+    const savedSubmenus = JSON.parse(localStorage.getItem('openSubmenus') || '[]');
+    // First clear any default 'open' classes if we have a saved state
+    if (savedSubmenus.length > 0 || localStorage.getItem('openSubmenus')) {
+        document.querySelectorAll('.submenu-container').forEach(el => el.classList.remove('open'));
+        document.querySelectorAll('.chevron-icon').forEach(el => el.classList.remove('rotate'));
+        
+        savedSubmenus.forEach(id => {
+            const submenu = document.getElementById(id);
+            if (submenu) {
+                submenu.classList.add('open');
+                const trigger = document.querySelector(`[onclick*="toggleSubMenu('${id}'"]`);
+                if (trigger) {
+                    const chevron = trigger.querySelector('.chevron-icon');
+                    if (chevron) chevron.classList.add('rotate');
+                }
+            }
+        });
+    }
+
     if (mobileMenuBtn) {
         mobileMenuBtn.addEventListener('click', () => {
             sidebar.classList.toggle('-translate-x-full');
@@ -60,17 +85,29 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Main navigation logic
-function showSection(sectionId) {
-    // Setup for future when more sections are added
+function showSection(sectionId, shouldScroll = true) {
+    localStorage.setItem('lastSection', sectionId);
+    
     document.querySelectorAll('.content-section').forEach(el => {
         el.classList.remove('active');
     });
     const section = document.getElementById(sectionId);
     if (section) {
         section.classList.add('active');
+        if (shouldScroll) {
+            const main = document.querySelector('main');
+            if (main) main.scrollTop = 0;
+        }
     }
 
-    // On mobile, hide menu after selecting
+    // Update active state in sidebar
+    document.querySelectorAll('.menu-item').forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('onclick')?.includes(`showSection('${sectionId}')`)) {
+            item.classList.add('active');
+        }
+    });
+
     const sidebar = document.getElementById('sidebar');
     if (window.innerWidth < 768 && sidebar) {
         sidebar.classList.add('-translate-x-full', 'hidden');
@@ -87,5 +124,10 @@ function toggleSubMenu(submenuId, button) {
         if (chevron) {
             chevron.classList.toggle('rotate');
         }
+        
+        // Save state
+        const openSubmenus = Array.from(document.querySelectorAll('.submenu-container.open'))
+            .map(el => el.id);
+        localStorage.setItem('openSubmenus', JSON.stringify(openSubmenus));
     }
 }

@@ -33,13 +33,41 @@ body {
     }
 }
 
+.menu-item {
+    color: #475569; /* slate-600 */
+    transition: all 0.2s ease;
+}
+
+.menu-item:hover {
+    background-color: #f1f5f9 !important; /* slate-100 */
+    color: #6db33f; /* spring color on hover */
+}
+
 .menu-item.active {
-    background-color: #3b82f6;
-    color: white;
+    background-color: #3b82f6 !important;
+    color: white !important;
+}
+
+.menu-item.active:hover {
+    background-color: #2563eb !important; /* darker blue on hover when active */
+    color: white !important;
+}
+
+.dark .menu-item {
+    color: #94a3b8; /* slate-400 */
+}
+
+.dark .menu-item:hover {
+    background-color: rgba(30, 41, 59, 0.5) !important;
+    color: #6db33f;
 }
 
 .dark .menu-item.active {
-    background-color: #2563eb;
+    background-color: #2563eb !important;
+}
+
+.dark .menu-item.active:hover {
+    background-color: #1d4ed8 !important;
 }
 
 .card-hover {
