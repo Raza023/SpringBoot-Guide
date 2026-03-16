@@ -70,6 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Load external content
+    loadExternalContent('how-it-works', 'how-it-works.html');
+    loadExternalContent('microservices', 'microservices.html');
+
     if (mobileMenuBtn) {
         mobileMenuBtn.addEventListener('click', () => {
             sidebar.classList.toggle('-translate-x-full');
@@ -83,6 +87,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+async function loadExternalContent(containerId, filePath) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    try {
+        const response = await fetch(filePath);
+        if (response.ok) {
+            const content = await response.text();
+            container.innerHTML = content;
+            
+            // Check if we need to jump to a hash within this loaded content
+            if (window.location.hash) {
+                const target = container.querySelector(window.location.hash);
+                if (target) {
+                    target.scrollIntoView();
+                }
+            }
+        } else {
+            container.innerHTML = `<p class="text-rose-500">Error loading content: ${response.statusText}</p>`;
+        }
+    } catch (error) {
+        container.innerHTML = `<p class="text-rose-500">Fetch error: ${error.message}</p>`;
+    }
+}
 
 // Main navigation logic
 function showSection(sectionId, shouldScroll = true) {

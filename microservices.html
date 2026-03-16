@@ -1,0 +1,394 @@
+                    <header class="mb-12">
+                        <h1
+                            class="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 mb-4 pb-1">
+                            0.3 Microservices
+                        </h1>
+                        <p class="text-lg text-slate-600 dark:text-slate-400 border-l-4 border-indigo-500 pl-4 italic">
+                            Microservices use web services (REST/SOAP) for communication. A web service is simply a
+                            medium for communication.
+                        </p>
+                    </header>
+
+                    <!-- Web Services Comparison -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                        <!-- REST Card -->
+                        <div
+                            class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-700/50 card-hover relative overflow-hidden group">
+                            <div class="absolute top-0 left-0 w-2 h-full bg-blue-500"></div>
+                            <h3 class="text-2xl font-bold mb-6 flex items-center text-slate-800 dark:text-white">
+                                <i class="fa-solid fa-cloud text-blue-500 mr-3"></i> REST Web Services
+                            </h3>
+                            <p class="text-sm text-slate-500 mb-4 font-medium uppercase tracking-wider">Representational
+                                State Transfer</p>
+                            <ul class="space-y-3 text-slate-600 dark:text-slate-300">
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-blue-500 text-xs"></i>
+                                    <span><b>Architectural style</b> (not a protocol)</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-blue-500 text-xs"></i>
+                                    <span>Uses HTTP (GET, POST, PUT, DELETE)</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-blue-500 text-xs"></i>
+                                    <span>Usually returns <b>JSON</b></span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-blue-500 text-xs"></i>
+                                    <span>Lightweight & fast</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-blue-500 text-xs"></i>
+                                    <span><b>Stateless</b></span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- SOAP Card -->
+                        <div
+                            class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-700/50 card-hover relative overflow-hidden group">
+                            <div class="absolute top-0 left-0 w-2 h-full bg-purple-500"></div>
+                            <h3 class="text-2xl font-bold mb-6 flex items-center text-slate-800 dark:text-white">
+                                <i class="fa-solid fa-envelope-open-text text-purple-500 mr-3"></i> SOAP Web Services
+                            </h3>
+                            <p class="text-sm text-slate-500 mb-4 font-medium uppercase tracking-wider">Simple Object
+                                Access Protocol</p>
+                            <ul class="space-y-3 text-slate-600 dark:text-slate-300">
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-purple-500 text-xs"></i>
+                                    <span><b>Protocol-based</b>: SOAP is a protocol, not just a style.</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-purple-500 text-xs"></i>
+                                    <span><b>Transport-independent</b>: Can use HTTP, SMTP, TCP, etc.</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-purple-500 text-xs"></i>
+                                    <span>Uses <b>XML</b>: SOAP messages are strictly XML formatted.</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-purple-500 text-xs"></i>
+                                    <span>Operations via <b>WSDL</b> (Web Services Description Language).</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-purple-500 text-xs"></i>
+                                    <span><b>Heavyweight</b>: Formal, strict standards, slower than REST.</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-purple-500 text-xs"></i>
+                                    <span>Can be <b>Stateful</b> or Stateless.</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check text-purple-500 text-xs"></i>
+                                    <span>Built-in error handling & security (WS-Security).</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Agenda Section -->
+                    <section
+                        class="bg-indigo-900/5 dark:bg-indigo-900/20 rounded-3xl p-8 border border-indigo-100 dark:border-indigo-900/30">
+                        <h2 class="text-2xl font-bold mb-6 text-indigo-900 dark:text-indigo-400 flex items-center">
+                            <i class="fa-solid fa-list-check mr-3"></i> Agenda
+                        </h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <a href="#q1"
+                                class="p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 hover:text-indigo-600 transition-colors">Q1:
+                                What is Microservices?</a>
+                            <a href="#q2"
+                                class="p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 hover:text-indigo-600 transition-colors">Q2:
+                                Why microservices?</a>
+                            <a href="#q3"
+                                class="p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 hover:text-indigo-600 transition-colors">Q3:
+                                What is Monolithic Architecture?</a>
+                            <a href="#q4"
+                                class="p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 hover:text-indigo-600 transition-colors">Q4:
+                                Drawbacks of Monolithic Architecture?</a>
+                            <a href="#q5"
+                                class="p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 hover:text-indigo-600 transition-colors">Q5:
+                                Advantages to use microservice?</a>
+                        </div>
+                    </section>
+
+                    <!-- Question Breakdown -->
+                    <div class="space-y-12 mt-12">
+                        <!-- Q1 -->
+                        <section id="q1" class="scroll-mt-24">
+                            <div
+                                class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-700/50 card-hover">
+                                <h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-6 flex items-center">
+                                    <span
+                                        class="bg-indigo-600 text-white w-10 h-10 rounded-lg flex items-center justify-center mr-4 shadow-lg shadow-indigo-500/20">1</span>
+                                    What is Microservice?
+                                </h3>
+                                <p
+                                    class="text-slate-600 dark:text-slate-300 leading-relaxed text-lg italic bg-slate-50 dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-100 dark:border-slate-800">
+                                    "Microservices is an architectural style to design our application uniquely with
+                                    several small modules developed individually, packaged individually, and deployed
+                                    individually in individual processes."
+                                </p>
+                            </div>
+                        </section>
+
+                        <!-- Q2 & Q3 -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <section id="q2" class="scroll-mt-24">
+                                <div
+                                    class="h-full bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-700/50 card-hover">
+                                    <h3
+                                        class="text-2xl font-bold text-slate-800 dark:text-white mb-6 flex items-center">
+                                        <span
+                                            class="bg-blue-600 text-white w-10 h-10 rounded-lg flex items-center justify-center mr-4">2</span>
+                                        Why Microservice?
+                                    </h3>
+                                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                        Why did microservices come into the picture when we were previously developing
+                                        and deploying our application in an efficient way using the monolithic approach?
+                                        Let's explore the previous architecture and its disadvantages.
+                                    </p>
+                                </div>
+                            </section>
+
+                            <section id="q3" class="scroll-mt-24">
+                                <div
+                                    class="h-full bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-700/50 card-hover">
+                                    <h3
+                                        class="text-2xl font-bold text-slate-800 dark:text-white mb-6 flex items-center">
+                                        <span
+                                            class="bg-purple-600 text-white w-10 h-10 rounded-lg flex items-center justify-center mr-4">3</span>
+                                        What is monolithic architecture?
+                                    </h3>
+                                    <div class="flex items-start gap-4">
+                                        <div class="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-xl text-purple-600">
+                                            <i class="fa-solid fa-cube text-2xl"></i>
+                                        </div>
+                                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                            We develop all services together and then package all services in a
+                                            <b>single WAR file</b> and then deploy it to the server.
+                                        </p>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <!-- Q4 -->
+                        <section id="q4" class="scroll-mt-24">
+                            <div
+                                class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-700/50 card-hover">
+                                <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+                                    <h3 class="text-2xl font-bold text-slate-800 dark:text-white flex items-center">
+                                        <span
+                                            class="bg-rose-600 text-white w-10 h-10 rounded-lg flex items-center justify-center mr-4">4</span>
+                                        Drawbacks of monolithic architecture?
+                                    </h3>
+                                    <div
+                                        class="bg-rose-100 dark:bg-rose-900/30 px-4 py-1 rounded-full border border-rose-200 dark:border-rose-800 text-rose-600 font-mono font-bold text-sm">
+                                        SHORTHAND: PCAEC
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    <div
+                                        class="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center">
+                                        <i class="fa-solid fa-gauge-high text-rose-500 text-2xl mb-4"></i>
+                                        <h4 class="font-bold mb-2">Performance Issues</h4>
+                                        <p class="text-xs text-slate-500 leading-relaxed">Due to huge data being
+                                            packaged in a single WAR file, performance is impacted.</p>
+                                    </div>
+                                    <div
+                                        class="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center">
+                                        <i class="fa-solid fa-rotate text-rose-500 text-2xl mb-4"></i>
+                                        <h4 class="font-bold mb-2">Continuous Deployment</h4>
+                                        <p class="text-xs text-slate-500 leading-relaxed">Not possible; if one module is
+                                            not working, the whole project is disturbed, resulting in long wait times.
+                                        </p>
+                                    </div>
+                                    <div
+                                        class="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center">
+                                        <i class="fa-solid fa-microchip text-rose-500 text-2xl mb-4"></i>
+                                        <h4 class="font-bold mb-2">Technological Rigidity</h4>
+                                        <p class="text-xs text-slate-500 leading-relaxed">Adapting new technologies is
+                                            difficult when modules must match (e.g., all Java or all Python).</p>
+                                    </div>
+                                    <div
+                                        class="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center">
+                                        <i class="fa-solid fa-code text-rose-500 text-2xl mb-4"></i>
+                                        <h4 class="font-bold mb-2">Overloaded Resources</h4>
+                                        <p class="text-xs text-slate-500 leading-relaxed">Overloaded IDE and web
+                                            container due to the massive codebase size.</p>
+                                    </div>
+                                    <div
+                                        class="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center">
+                                        <i class="fa-solid fa-bug text-rose-500 text-2xl mb-4"></i>
+                                        <h4 class="font-bold mb-2">Exception Propagation</h4>
+                                        <p class="text-xs text-slate-500 leading-relaxed">Propagation is not proper; one
+                                            module failing often impacts all others.</p>
+                                    </div>
+                                    <div
+                                        class="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center">
+                                        <i class="fa-solid fa-book-open text-rose-500 text-2xl mb-4"></i>
+                                        <h4 class="font-bold mb-2">Code Readability</h4>
+                                        <p class="text-xs text-slate-500 leading-relaxed">Working with one module
+                                            requires an understanding of all others.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Q5 -->
+                        <section id="q5" class="scroll-mt-24">
+                            <div
+                                class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-700/50 card-hover">
+                                <h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-8 flex items-center">
+                                    <span
+                                        class="bg-emerald-600 text-white w-10 h-10 rounded-lg flex items-center justify-center mr-4">5</span>
+                                    Advantages to use micro service?
+                                </h3>
+                                <div class="space-y-6">
+                                    <!-- Advantage 1 -->
+                                    <div
+                                        class="flex gap-4 p-6 bg-emerald-50/50 dark:bg-emerald-900/10 rounded-2xl border border-emerald-100/50 dark:border-emerald-800/30">
+                                        <div
+                                            class="w-12 h-12 rounded-xl bg-emerald-500 text-white flex items-center justify-center flex-shrink-0">
+                                            <i class="fa-solid fa-bolt"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-slate-800 dark:text-white mb-2">Performance &
+                                                Registry</h4>
+                                            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                                As each service is deployed individually in different containers (using
+                                                registries like <b>Eureka Service Registry</b>), performance won’t be
+                                                slow. Quick development and delivery make it easy to track and fix bugs.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Advantage 2 -->
+                                    <div
+                                        class="flex gap-4 p-6 bg-indigo-50/50 dark:bg-indigo-900/10 rounded-2xl border border-indigo-100/50 dark:border-indigo-800/30">
+                                        <div
+                                            class="w-12 h-12 rounded-xl bg-indigo-500 text-white flex items-center justify-center flex-shrink-0">
+                                            <i class="fa-solid fa-rotate-right"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-slate-800 dark:text-white mb-2">Continuous
+                                                Deployment</h4>
+                                            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                                Continuous deployment will not suffer. If you want to deploy a bug fix
+                                                in one component, you just change and deploy that specific module
+                                                without bothering other services already registered in the Service
+                                                Registry.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Advantage 3 -->
+                                    <div
+                                        class="flex gap-4 p-6 bg-blue-50/50 dark:bg-blue-900/10 rounded-2xl border border-blue-100/50 dark:border-blue-800/30">
+                                        <div
+                                            class="w-12 h-12 rounded-xl bg-blue-500 text-white flex items-center justify-center flex-shrink-0">
+                                            <i class="fa-solid fa-layer-group"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-slate-800 dark:text-white mb-2">Technology
+                                                Diversity</h4>
+                                            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                                Adopting new technologies or languages is very easy, as you can
+                                                implement a different language for each module of the application.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Advantage 4 -->
+                                    <div
+                                        class="flex gap-4 p-6 bg-amber-50/50 dark:bg-amber-900/10 rounded-2xl border border-amber-100/50 dark:border-amber-800/30">
+                                        <div
+                                            class="w-12 h-12 rounded-xl bg-amber-500 text-white flex items-center justify-center flex-shrink-0">
+                                            <i class="fa-solid fa-server"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-slate-800 dark:text-white mb-2">Fast Startup &
+                                                Auto Restart</h4>
+                                            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                                As each service uses separate WAR/JAR files with less data, server
+                                                start-up is fast. We can run multiple ports and use <b>DevTools</b> or
+                                                <b>Spring Loader</b> for automatic restarts on logic changes.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Advantage 5 -->
+                                    <div
+                                        class="flex gap-4 p-6 bg-rose-50/50 dark:bg-rose-900/10 rounded-2xl border border-rose-100/50 dark:border-rose-800/30">
+                                        <div
+                                            class="w-12 h-12 rounded-xl bg-rose-500 text-white flex items-center justify-center flex-shrink-0">
+                                            <i class="fa-solid fa-shield-virus"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-slate-800 dark:text-white mb-2">Proper Exception
+                                                Propagation</h4>
+                                            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                                Exception propagation is proper; if any service fails, it won’t impact
+                                                the entire application. We can propagate it using <b>Hystrix</b>.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Advantage 6 -->
+                                    <div
+                                        class="flex gap-4 p-6 bg-slate-50/50 dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-800">
+                                        <div
+                                            class="w-12 h-12 rounded-xl bg-slate-700 text-white flex items-center justify-center flex-shrink-0">
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-slate-800 dark:text-white mb-2">Clear Code
+                                                Readability</h4>
+                                            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                                Code readability is very clear. Suppose a new resource joins and needs
+                                                to work on the Shipping microservice; they can easily check the flow of
+                                                that specific individual service.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- Spring Boot Microservices Footer -->
+                    <section
+                        class="mt-20 p-8 rounded-3xl bg-gradient-to-br from-spring/20 to-indigo-500/10 border border-spring/30 relative overflow-hidden">
+                        <div class="relative z-10">
+                            <h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-6">Spring Boot Microservices
+                                Support</h3>
+                            <p class="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
+                                Spring Boot supports microservices and provides components like:
+                            </p>
+                            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                                <div
+                                    class="p-4 bg-white/50 dark:bg-slate-800/50 rounded-2xl text-center backdrop-blur-sm border border-white/20">
+                                    <p class="font-bold text-indigo-600">Hystrix</p>
+                                    <p class="text-[10px] text-slate-500 uppercase tracking-tighter">Circuit Breaker</p>
+                                </div>
+                                <div
+                                    class="p-4 bg-white/50 dark:bg-slate-800/50 rounded-2xl text-center backdrop-blur-sm border border-white/20">
+                                    <p class="font-bold text-indigo-600">Eureka</p>
+                                    <p class="text-[10px] text-slate-500 uppercase tracking-tighter">Service Registry
+                                    </p>
+                                </div>
+                                <div
+                                    class="p-4 bg-white/50 dark:bg-slate-800/50 rounded-2xl text-center backdrop-blur-sm border border-white/20">
+                                    <p class="font-bold text-indigo-600">Zuul</p>
+                                    <p class="text-[10px] text-slate-500 uppercase tracking-tighter">API Gateway</p>
+                                </div>
+                                <div
+                                    class="p-4 bg-white/50 dark:bg-slate-800/50 rounded-2xl text-center backdrop-blur-sm border border-white/20">
+                                    <p class="font-bold text-indigo-600">Cloud Gateway</p>
+                                    <p class="text-[10px] text-slate-500 uppercase tracking-tighter">API Gateway</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-spring opacity-10 rounded-full blur-3xl">
+                        </div>
+                    </section>
