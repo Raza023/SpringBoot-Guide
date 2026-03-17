@@ -102,3 +102,8 @@ html {
 .chevron-icon.rotate {
     transform: rotate(180deg);
 }
+
+img:not(.no-lightbox) {
+    cursor: pointer;
+}
+

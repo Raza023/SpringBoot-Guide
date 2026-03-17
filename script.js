@@ -11,7 +11,66 @@ tailwind.config = {
     }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+    // Lightbox Functionality
+    const createLightbox = () => {
+        const lightbox = document.createElement('div');
+        lightbox.id = 'lightbox';
+        lightbox.className = 'fixed inset-0 z-[100] bg-slate-900/90 backdrop-blur-md flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500 p-4 md:p-8';
+        lightbox.innerHTML = `
+            <button class="absolute top-6 right-6 text-white text-3xl hover:text-spring transition-colors z-[110] p-2 focus:outline-none">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="relative max-w-5xl max-h-[90vh] flex items-center justify-center transform transition-all duration-500 scale-95 opacity-0">
+                <img src="" alt="Lightbox" class="max-w-full max-h-[85vh] rounded-2xl shadow-2xl border border-white/10 ring-1 ring-white/20 object-contain" />
+                <div class="absolute -bottom-10 left-0 right-0 text-center text-white/50 text-xs font-medium tracking-widest uppercase pointer-events-none">
+                    Interactive Preview
+                </div>
+            </div>
+        `;
+        document.body.appendChild(lightbox);
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target.closest('button') || e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        return lightbox;
+    };
+
+    const lightbox = createLightbox();
+    const lightboxImg = lightbox.querySelector('img');
+    const lightboxContent = lightbox.querySelector('div:has(img)');
+
+    const openLightbox = (src) => {
+        lightboxImg.src = src;
+        lightbox.classList.remove('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => {
+            lightboxContent.classList.remove('scale-95', 'opacity-0');
+        }, 10);
+    };
+
+    const closeLightbox = () => {
+        lightboxContent.classList.add('scale-95', 'opacity-0');
+        lightbox.classList.add('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = '';
+    };
+
+    // Attach lightbox listeners to images
+    const initLightboxForImages = () => {
+        document.querySelectorAll('img:not(.no-lightbox)').forEach(img => {
+            if (!img.dataset.lightboxAttached) {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', () => openLightbox(img.src));
+                img.dataset.lightboxAttached = 'true';
+            }
+        });
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        initLightboxForImages();
+
     // Dark Mode Toggle
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
@@ -97,6 +156,8 @@ async function loadExternalContent(containerId, filePath) {
         if (response.ok) {
             const content = await response.text();
             container.innerHTML = content;
+            initLightboxForImages();
+
             
             // Check if we need to jump to a hash within this loaded content
             if (window.location.hash) {

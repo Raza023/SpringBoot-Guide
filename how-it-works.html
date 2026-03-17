@@ -1,290 +1,286 @@
-                    <header class="mb-12">
-                        <h1
-                            class="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-spring to-emerald-600 mb-4 pb-1">
-                            How Spring Boot Internally Works
-                        </h1>
-                        <p class="text-lg text-slate-600 dark:text-slate-400 border-l-4 border-spring pl-4 italic">
-                            Unveiling the magic behind the "Convention over Configuration" philosophy.
-                        </p>
-                    </header>
+<header class="mb-12">
+    <h1
+        class="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-spring to-emerald-600 mb-4 pb-1">
+        How Spring Boot Internally Works
+    </h1>
+    <p class="text-lg text-slate-600 dark:text-slate-400 border-l-4 border-spring pl-4 italic">
+        Unveiling the magic behind the "Convention over Configuration" philosophy.
+    </p>
+</header>
 
-                    <!-- Auto-Configuration Magic -->
-                    <section
-                        class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-700/50 card-hover relative overflow-hidden group">
-                        <div class="absolute top-0 left-0 w-2 h-full bg-spring opacity-70"></div>
-                        <h2 id="auto-config"
-                            class="text-3xl font-bold mb-8 flex items-center text-slate-800 dark:text-white scroll-mt-24">
-                            <i class="fa-solid fa-wand-magic-sparkles text-spring mr-3 text-4xl"></i> Auto-configuration
-                            Magic
-                        </h2>
+<!-- Auto-Configuration Magic -->
+<section
+    class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-700/50 card-hover relative overflow-hidden group">
+    <div class="absolute top-0 left-0 w-2 h-full bg-spring opacity-70"></div>
+    <h2 id="auto-config" class="text-3xl font-bold mb-8 flex items-center text-slate-800 dark:text-white scroll-mt-24">
+        <i class="fa-solid fa-wand-magic-sparkles text-spring mr-3 text-4xl"></i> Auto-configuration
+        Magic
+    </h2>
 
-                        <div class="space-y-8">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div class="space-y-4">
-                                    <h3 class="text-xl font-bold text-slate-700 dark:text-slate-200 flex items-center">
-                                        <i class="fa-solid fa-jar text-amber-500 mr-2"></i> Pre-configured Jars
-                                    </h3>
-                                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-                                        We use <b>pre-configured jars</b> provided by Spring Boot developers. Instead of
-                                        manual setup, these jars come with sensible defaults.
-                                    </p>
-                                    <div
-                                        class="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
-                                        <p class="text-sm font-semibold text-slate-500 mb-2 uppercase tracking-wider">
-                                            Starter POMs</p>
-                                        <ul class="space-y-2">
-                                            <li class="flex items-center text-sm">
-                                                <i class="fa-solid fa-check text-spring mr-2"></i>
-                                                <code>spring-boot-starter-web</code>
-                                            </li>
-                                            <li class="flex items-center text-sm">
-                                                <i class="fa-solid fa-check text-spring mr-2"></i>
-                                                <code>spring-boot-starter-data-jpa</code>
-                                            </li>
-                                            <li class="flex items-center text-sm">
-                                                <i class="fa-solid fa-check text-spring mr-2"></i>
-                                                <code>spring-boot-starter-test</code>
-                                            </li>
-                                        </ul>
-                                        <p class="mt-3 text-xs italic text-slate-500">Adding these "starters"
-                                            transitively brings in all required <b>dependencies</b> (jars).</p>
-                                    </div>
-                                </div>
+    <div class="space-y-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-4">
+                <h3 class="text-xl font-bold text-slate-700 dark:text-slate-200 flex items-center">
+                    <i class="fa-solid fa-jar text-amber-500 mr-2"></i> Pre-configured Jars
+                </h3>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    We use <b>pre-configured jars</b> provided by Spring Boot developers. Instead of
+                    manual setup, these jars come with sensible defaults.
+                </p>
+                <div
+                    class="bg-slate-50 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
+                    <p class="text-sm font-semibold text-slate-500 mb-2 uppercase tracking-wider">
+                        Starter POMs</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-sm">
+                            <i class="fa-solid fa-check text-spring mr-2"></i>
+                            <code>spring-boot-starter-web</code>
+                        </li>
+                        <li class="flex items-center text-sm">
+                            <i class="fa-solid fa-check text-spring mr-2"></i>
+                            <code>spring-boot-starter-data-jpa</code>
+                        </li>
+                        <li class="flex items-center text-sm">
+                            <i class="fa-solid fa-check text-spring mr-2"></i>
+                            <code>spring-boot-starter-test</code>
+                        </li>
+                    </ul>
+                    <p class="mt-3 text-xs italic text-slate-500">Adding these "starters"
+                        transitively brings in all required <b>dependencies</b> (jars).</p>
+                </div>
+            </div>
 
-                                <div class="space-y-4">
-                                    <h3 class="text-xl font-bold text-slate-700 dark:text-slate-200 flex items-center">
-                                        <i class="fa-solid fa-file-code text-blue-500 mr-2"></i> spring.factories
-                                    </h3>
-                                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-                                        After adding the starter pom, the core registry is
-                                        <code>META-INF/spring.factories</code>. It contains a list of
-                                        <b>Auto-Configuration classes</b>.
-                                    </p>
-                                    <div
-                                        class="p-4 bg-indigo-50/50 dark:bg-indigo-900/10 rounded-2xl border border-indigo-100 dark:border-indigo-800/30">
-                                        <p class="text-sm italic">"Spring Boot reads this file at startup to find
-                                            <b>@Configuration</b> classes that provide the 'magic' beans."
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+            <div class="space-y-4">
+                <h3 class="text-xl font-bold text-slate-700 dark:text-slate-200 flex items-center">
+                    <i class="fa-solid fa-file-code text-blue-500 mr-2"></i> spring.factories
+                </h3>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    After adding the starter pom, the core registry is
+                    <code>META-INF/spring.factories</code>. It contains a list of
+                    <b>Auto-Configuration classes</b>.
+                </p>
+                <div
+                    class="p-4 bg-indigo-50/50 dark:bg-indigo-900/10 rounded-2xl border border-indigo-100 dark:border-indigo-800/30">
+                    <p class="text-sm italic">"Spring Boot reads this file at startup to find
+                        <b>@Configuration</b> classes that provide the 'magic' beans."
+                    </p>
+                </div>
+            </div>
+        </div>
 
+        <div
+            class="bg-white dark:bg-slate-900/80 rounded-2xl p-6 border border-slate-100 dark:border-slate-800 mt-6 shadow-inner">
+            <h4 class="font-bold text-slate-800 dark:text-white mb-4 flex items-center">
+                <i class="fa-solid fa-microchip text-rose-500 mr-2"></i> The Decision Logic:
+                @Conditional
+            </h4>
+            <div class="flex flex-col md:flex-row items-center gap-6">
+                <div class="flex-1 space-y-3">
+                    <p class="text-sm text-slate-600 dark:text-slate-400">
+                        Before loading a configuration, Spring Boot performs a "Conditional Check":
+                    </p>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <li
+                            class="bg-white dark:bg-slate-800 px-3 py-2 rounded-lg border border-slate-100 dark:border-slate-700 text-xs font-mono">
+                            @ConditionalOnClass</li>
+                        <li
+                            class="bg-white dark:bg-slate-800 px-3 py-2 rounded-lg border border-slate-100 dark:border-slate-700 text-xs font-mono">
+                            @ConditionalOnProperty</li>
+                        <li
+                            class="bg-white dark:bg-slate-800 px-3 py-2 rounded-lg border border-slate-100 dark:border-slate-700 text-xs font-mono">
+                            @ConditionalOnMissingBean</li>
+                        <li
+                            class="bg-white dark:bg-slate-800 px-3 py-2 rounded-lg border border-slate-100 dark:border-slate-700 text-xs font-mono">
+                            @ConditionalOnResource</li>
+                    </ul>
+                </div>
+                <div
+                    class="flex-shrink-0 bg-spring/10 p-5 rounded-full border-2 border-dashed border-spring/30 animate-pulse text-spring font-bold text-center">
+                    <span class="block text-2xl">IF CONDITIONS ARE MET</span>
+                    <span class="text-[10px] uppercase">Enabled</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Real-world Example: DispatcherServlet -->
+        <div
+            class="bg-indigo-50 dark:bg-indigo-900/10 p-6 rounded-3xl border border-indigo-100/50 dark:border-indigo-800/20">
+            <h4 class="font-bold text-indigo-800 dark:text-indigo-300 mb-4 flex items-center">
+                <i class="fa-solid fa-lightbulb mr-2"></i> Logic Example: DispatcherServlet
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="p-4 bg-white dark:bg-slate-900 rounded-xl border border-indigo-100/30">
+                    <p class="text-xs font-bold text-slate-500 uppercase tracking-tighter mb-2">
+                        Scenario A</p>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                        If we have <code>spring-boot-starter-web</code> jar → found
+                        <b>@ConditionalOnClass(Servlet.class)</b> → it <b>enables</b>
+                        DispatcherServlet automatically.
+                    </p>
+                </div>
+                <div class="p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-100/30">
+                    <p class="text-xs font-bold text-slate-500 uppercase tracking-tighter mb-2">
+                        Scenario B</p>
+                    <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                        If we don't have the web starter → condition fails → it <b>skips</b>
+                        DispatcherServlet, keeping the app lightweight.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Execution Flow -->
+    <section id="execution-flow" class="scroll-mt-24">
+        <h2 class="text-3xl font-bold mt-12 mb-8 text-slate-800 dark:text-white">
+            The Startup Lifecycle
+        </h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-1 space-y-6">
+                <div
+                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-sm">
+                    <h3 class="font-bold text-xl mb-4 text-spring">@SpringBootApplication</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                        This <i>single</i> annotation represents a combination of three powerful
+                        traditional Spring annotations:
+                    </p>
+                    <div class="mt-4 space-y-3">
+                        <div
+                            class="flex items-center gap-3 p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                            <span class="text-xs font-mono text-blue-500">@Configuration</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-3 p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                            <span class="text-xs font-mono text-emerald-500">@EnableAutoConfiguration</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-3 p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                            <span class="text-xs font-mono text-amber-500">@ComponentScan</span>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-xs text-slate-500">Note: The main method is primarily for IDE
+                        launching; in production, deployment scenarios vary.</p>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 space-y-4">
+                <div
+                    class="bg-slate-900 rounded-3xl p-8 text-slate-300 font-mono text-sm relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i class="fa-solid fa-code text-6xl"></i>
+                    </div>
+                    <h3 class="text-slate-400 text-xs font-bold tracking-[0.2em] mb-6 border-l-2 border-spring pl-3">
+                        SpringApplication.run() Pipeline</h3>
+                    <p class="text-slate-500 text-xs mt-1 italic">SpringApplication.run() helps us to
+                        start the ApplicationContext that searches the classes with @Configuration,
+                        @Component, @Service and it will initialize all the declared beans in those
+                        Configuration classes and initiate the required beans. And stores in IOC
+                        (Inversion of Control) (IoC container is a framework for implementing automated
+                        dependency injection.) of JVM</p>
+
+                    <div class="space-y-6 relative">
+                        <div class="absolute left-[15px] top-2 bottom-2 w-[2px] bg-slate-800"></div>
+
+                        <div class="flex gap-4 relative">
                             <div
-                                class="bg-white dark:bg-slate-900/80 rounded-2xl p-6 border border-slate-100 dark:border-slate-800 mt-6 shadow-inner">
-                                <h4 class="font-bold text-slate-800 dark:text-white mb-4 flex items-center">
-                                    <i class="fa-solid fa-microchip text-rose-500 mr-2"></i> The Decision Logic:
-                                    @Conditional
-                                </h4>
-                                <div class="flex flex-col md:flex-row items-center gap-6">
-                                    <div class="flex-1 space-y-3">
-                                        <p class="text-sm text-slate-600 dark:text-slate-400">
-                                            Before loading a configuration, Spring Boot performs a "Conditional Check":
-                                        </p>
-                                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                                            <li
-                                                class="bg-white dark:bg-slate-800 px-3 py-2 rounded-lg border border-slate-100 dark:border-slate-700 text-xs font-mono">
-                                                @ConditionalOnClass</li>
-                                            <li
-                                                class="bg-white dark:bg-slate-800 px-3 py-2 rounded-lg border border-slate-100 dark:border-slate-700 text-xs font-mono">
-                                                @ConditionalOnProperty</li>
-                                            <li
-                                                class="bg-white dark:bg-slate-800 px-3 py-2 rounded-lg border border-slate-100 dark:border-slate-700 text-xs font-mono">
-                                                @ConditionalOnMissingBean</li>
-                                            <li
-                                                class="bg-white dark:bg-slate-800 px-3 py-2 rounded-lg border border-slate-100 dark:border-slate-700 text-xs font-mono">
-                                                @ConditionalOnResource</li>
-                                        </ul>
-                                    </div>
-                                    <div
-                                        class="flex-shrink-0 bg-spring/10 p-5 rounded-full border-2 border-dashed border-spring/30 animate-pulse text-spring font-bold text-center">
-                                        <span class="block text-2xl">IF CONDITIONS ARE MET</span>
-                                        <span class="text-[10px] uppercase">Enabled</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Real-world Example: DispatcherServlet -->
-                            <div
-                                class="bg-indigo-50 dark:bg-indigo-900/10 p-6 rounded-3xl border border-indigo-100/50 dark:border-indigo-800/20">
-                                <h4 class="font-bold text-indigo-800 dark:text-indigo-300 mb-4 flex items-center">
-                                    <i class="fa-solid fa-lightbulb mr-2"></i> Logic Example: DispatcherServlet
-                                </h4>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <div class="p-4 bg-white dark:bg-slate-900 rounded-xl border border-indigo-100/30">
-                                        <p class="text-xs font-bold text-slate-500 uppercase tracking-tighter mb-2">
-                                            Scenario A</p>
-                                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                                            If we have <code>spring-boot-starter-web</code> jar → found
-                                            <b>@ConditionalOnClass(Servlet.class)</b> → it <b>enables</b>
-                                            DispatcherServlet automatically.
-                                        </p>
-                                    </div>
-                                    <div class="p-4 bg-white dark:bg-slate-900 rounded-xl border border-slate-100/30">
-                                        <p class="text-xs font-bold text-slate-500 uppercase tracking-tighter mb-2">
-                                            Scenario B</p>
-                                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                                            If we don't have the web starter → condition fails → it <b>skips</b>
-                                            DispatcherServlet, keeping the app lightweight.
-                                        </p>
-                                    </div>
-                                </div>
+                                class="w-8 h-8 rounded-full bg-spring text-white flex items-center justify-center font-bold z-10 text-xs shadow-lg shadow-spring/20">
+                                1</div>
+                            <div>
+                                <h4 class="text-white font-bold">Create Instance</h4>
+                                <p class="text-slate-500 text-xs mt-1 italic">Creates SpringApplication
+                                    instance</p>
                             </div>
                         </div>
 
-                    <!-- Execution Flow -->
-                    <section id="execution-flow" class="scroll-mt-24">
-                        <h2 class="text-3xl font-bold mt-12 mb-8 text-slate-800 dark:text-white">
-                            The Startup Lifecycle
-                        </h2>
-
-                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                            <div class="lg:col-span-1 space-y-6">
-                                <div
-                                    class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-sm">
-                                    <h3 class="font-bold text-xl mb-4 text-spring">@SpringBootApplication</h3>
-                                    <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                                        This <i>single</i> annotation represents a combination of three powerful
-                                        traditional Spring annotations:
-                                    </p>
-                                    <div class="mt-4 space-y-3">
-                                        <div
-                                            class="flex items-center gap-3 p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                                            <span class="text-xs font-mono text-blue-500">@Configuration</span>
-                                        </div>
-                                        <div
-                                            class="flex items-center gap-3 p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                                            <span
-                                                class="text-xs font-mono text-emerald-500">@EnableAutoConfiguration</span>
-                                        </div>
-                                        <div
-                                            class="flex items-center gap-3 p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                                            <span class="text-xs font-mono text-amber-500">@ComponentScan</span>
-                                        </div>
-                                    </div>
-                                    <p class="mt-4 text-xs text-slate-500">Note: The main method is primarily for IDE
-                                        launching; in production, deployment scenarios vary.</p>
-                                </div>
-                            </div>
-
-                            <div class="lg:col-span-2 space-y-4">
-                                <div
-                                    class="bg-slate-900 rounded-3xl p-8 text-slate-300 font-mono text-sm relative overflow-hidden group">
-                                    <div
-                                        class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                                        <i class="fa-solid fa-code text-6xl"></i>
-                                    </div>
-                                    <h3
-                                        class="text-slate-400 text-xs font-bold tracking-[0.2em] mb-6 border-l-2 border-spring pl-3">
-                                        SpringApplication.run() Pipeline</h3>
-                                    <p class="text-slate-500 text-xs mt-1 italic">SpringApplication.run() helps us to
-                                        start the ApplicationContext that searches the classes with @Configuration,
-                                        @Component, @Service and it will initialize all the declared beans in those
-                                        Configuration classes and initiate the required beans. And stores in IOC
-                                        (Inversion of Control) (IoC container is a framework for implementing automated
-                                        dependency injection.) of JVM</p>
-
-                                    <div class="space-y-6 relative">
-                                        <div class="absolute left-[15px] top-2 bottom-2 w-[2px] bg-slate-800"></div>
-
-                                        <div class="flex gap-4 relative">
-                                            <div
-                                                class="w-8 h-8 rounded-full bg-spring text-white flex items-center justify-center font-bold z-10 text-xs shadow-lg shadow-spring/20">
-                                                1</div>
-                                            <div>
-                                                <h4 class="text-white font-bold">Create Instance</h4>
-                                                <p class="text-slate-500 text-xs mt-1 italic">Creates SpringApplication
-                                                    instance</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="flex gap-4 relative">
-                                            <div
-                                                class="w-8 h-8 rounded-full bg-spring text-white flex items-center justify-center font-bold z-10 text-xs shadow-lg shadow-spring/20">
-                                                2</div>
-                                            <div>
-                                                <h4 class="text-white font-bold">Determine Web
-                                                    Environment/ApplicationType</h4>
-                                                <p class="text-slate-500 text-xs mt-1 italic">Detects Servlet, Reactive,
-                                                    or None</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="flex gap-4 relative">
-                                            <div
-                                                class="w-8 h-8 rounded-full bg-spring text-white flex items-center justify-center font-bold z-10 text-xs shadow-lg shadow-spring/20">
-                                                3</div>
-                                            <div>
-                                                <h4 class="text-white font-bold">Create ApplicationContext</h4>
-                                                <p class="text-slate-500 text-xs mt-1 italic">The core container for
-                                                    bean management</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="flex gap-4 relative">
-                                            <div
-                                                class="w-8 h-8 rounded-full bg-spring text-white flex items-center justify-center font-bold z-10 text-xs shadow-lg shadow-spring/20">
-                                                4</div>
-                                            <div>
-                                                <h4 class="text-white font-bold">Register & Refresh</h4>
-                                                <p class="text-slate-500 text-xs mt-1 italic">Register annotated classes
-                                                    as beans <br /> Instantiates beans, injects <br /> dependencies, and
-                                                    stores in <br /> <b>IoC Container</b></p>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="flex gap-4 relative">
-                                            <div
-                                                class="w-8 h-8 rounded-full bg-spring text-white flex items-center justify-center font-bold z-10 text-xs shadow-lg shadow-spring/20">
-                                                5</div>
-                                            <div>
-                                                <h4 class="text-white font-bold">Start Embedded Server</h4>
-                                                <p class="text-slate-500 text-xs mt-1 italic">Launches internal Tomcat /
-                                                    Jetty / Undertow</p>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="flex gap-4 relative">
-                                            <div
-                                                class="w-8 h-8 rounded-full bg-spring text-white flex items-center justify-center font-bold z-10 text-xs shadow-lg shadow-spring/20">
-                                                6</div>
-                                            <div>
-                                                <h4 class="text-white font-bold">App is up & running</h4>
-                                                <p class="text-slate-500 text-xs mt-1 italic">App is ready and listening
-                                                    for requests.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="flex gap-4 relative">
+                            <div
+                                class="w-8 h-8 rounded-full bg-spring text-white flex items-center justify-center font-bold z-10 text-xs shadow-lg shadow-spring/20">
+                                2</div>
+                            <div>
+                                <h4 class="text-white font-bold">Determine Web
+                                    Environment/ApplicationType</h4>
+                                <p class="text-slate-500 text-xs mt-1 italic">Detects Servlet, Reactive,
+                                    or None</p>
                             </div>
                         </div>
-                    </section>
 
-                    <!-- Application Types -->
-                    <section id="app-types"
-                        class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-700/50 card-hover scroll-mt-24 mt-12">
-                        <h2 class="text-2xl font-bold mb-6 text-slate-800 dark:text-white flex items-center">
-                            <i class="fa-solid fa-tags text-indigo-500 mr-3"></i> Application Types
-                        </h2>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="flex gap-4 relative">
                             <div
-                                class="p-6 rounded-2xl bg-blue-50/50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
-                                <h4 class="font-bold text-blue-700 dark:text-blue-400 mb-2">Servlet</h4>
-                                <p class="text-xs text-slate-600 dark:text-slate-400">Traditional Spring MVC application
-                                    using blocking I/O.</p>
-                            </div>
-                            <div
-                                class="p-6 rounded-2xl bg-emerald-50/50 dark:bg-emerald-900/10 border border-emerald-100 dark:border-emerald-900/20">
-                                <h4 class="font-bold text-emerald-700 dark:text-emerald-400 mb-2">Reactive</h4>
-                                <p class="text-xs text-slate-600 dark:text-slate-400">Spring WebFlux application for
-                                    non-blocking, asynchronous streams.</p>
-                            </div>
-                            <div
-                                class="p-6 rounded-2xl bg-slate-50/50 dark:bg-slate-900/10 border border-slate-200 dark:border-slate-800/20">
-                                <h4 class="font-bold text-slate-700 dark:text-slate-400 mb-2">None</h4>
-                                <p class="text-xs text-slate-600 dark:text-slate-400">CLI tools, batch jobs, or other
-                                    background applications without a web server.</p>
+                                class="w-8 h-8 rounded-full bg-spring text-white flex items-center justify-center font-bold z-10 text-xs shadow-lg shadow-spring/20">
+                                3</div>
+                            <div>
+                                <h4 class="text-white font-bold">Create ApplicationContext</h4>
+                                <p class="text-slate-500 text-xs mt-1 italic">The core container for
+                                    bean management</p>
                             </div>
                         </div>
-                    </section>
+
+                        <div class="flex gap-4 relative">
+                            <div
+                                class="w-8 h-8 rounded-full bg-spring text-white flex items-center justify-center font-bold z-10 text-xs shadow-lg shadow-spring/20">
+                                4</div>
+                            <div>
+                                <h4 class="text-white font-bold">Register & Refresh</h4>
+                                <p class="text-slate-500 text-xs mt-1 italic">Register annotated classes
+                                    as beans <br /> Instantiates beans, injects <br /> dependencies, and
+                                    stores in <br /> <b>IoC Container</b></p>
+                            </div>
+                        </div>
+
+
+                        <div class="flex gap-4 relative">
+                            <div
+                                class="w-8 h-8 rounded-full bg-spring text-white flex items-center justify-center font-bold z-10 text-xs shadow-lg shadow-spring/20">
+                                5</div>
+                            <div>
+                                <h4 class="text-white font-bold">Start Embedded Server</h4>
+                                <p class="text-slate-500 text-xs mt-1 italic">Launches internal Tomcat /
+                                    Jetty / Undertow</p>
+                            </div>
+                        </div>
+
+
+                        <div class="flex gap-4 relative">
+                            <div
+                                class="w-8 h-8 rounded-full bg-spring text-white flex items-center justify-center font-bold z-10 text-xs shadow-lg shadow-spring/20">
+                                6</div>
+                            <div>
+                                <h4 class="text-white font-bold">App is up & running</h4>
+                                <p class="text-slate-500 text-xs mt-1 italic">App is ready and listening
+                                    for requests.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Types -->
+    <section id="app-types"
+        class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-700/50 card-hover scroll-mt-24 mt-12">
+        <h2 class="text-2xl font-bold mb-6 text-slate-800 dark:text-white flex items-center">
+            <i class="fa-solid fa-tags text-indigo-500 mr-3"></i> Application Types
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div
+                class="p-6 rounded-2xl bg-blue-50/50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
+                <h4 class="font-bold text-blue-700 dark:text-blue-400 mb-2">Servlet</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-400">Traditional Spring MVC application
+                    using blocking I/O.</p>
+            </div>
+            <div
+                class="p-6 rounded-2xl bg-emerald-50/50 dark:bg-emerald-900/10 border border-emerald-100 dark:border-emerald-900/20">
+                <h4 class="font-bold text-emerald-700 dark:text-emerald-400 mb-2">Reactive</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-400">Spring WebFlux application for
+                    non-blocking, asynchronous streams.</p>
+            </div>
+            <div
+                class="p-6 rounded-2xl bg-slate-50/50 dark:bg-slate-900/10 border border-slate-200 dark:border-slate-800/20">
+                <h4 class="font-bold text-slate-700 dark:text-slate-400 mb-2">None</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-400">CLI tools, batch jobs, or other
+                    background applications without a web server.</p>
+            </div>
+        </div>
+    </section>
